@@ -9,7 +9,7 @@ erDiagram
         serial id
         varchar(100) username
         varchar(100) email
-        varchar(100) password
+        text password
         timestamp created_at
         timestamp updated_at
         int created_by
@@ -23,6 +23,10 @@ erDiagram
         varchar(20) phone
         varchar(100) address
         char(1) gender
+        timestamp created_at
+        timestamp updated_at
+        int created_by
+        int updated_by
     }
 
     users ||--o| profiles : own
@@ -79,8 +83,8 @@ erDiagram
 
     password_resets {
         serial id
-        varchar(100) old_password
-        varchar(100) new_password
+        text old_password
+        text new_password
         int user_id
         timestamp created_at
         timestamp updated_at
