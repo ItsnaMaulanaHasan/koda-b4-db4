@@ -39,7 +39,7 @@ HAVING
             )
     );
 
--- -- Mendapatkan tahun tersibuk sepanjang masa
+-- Mendapatkan tahun tersibuk sepanjang masa
 SELECT year, COUNT(year) AS total_movie
 FROM movies
 GROUP BY
@@ -54,3 +54,16 @@ HAVING
                     year
             )
     );
+
+-- Mendapatkan movies dengan genres yang dibuatkan menjadi 1 kolom (value dipisahkan dengan koma), menggunakan string_agg
+SELECT
+    movies.name AS movie_name,
+    string_agg(
+        movies_genres.genre,
+        ', '
+        ORDER BY movies.name
+    ) AS movie_with_genre
+FROM movies
+    JOIN movies_genres ON movies.id = movies_genres.movie_id
+GROUP BY
+    movies.name
