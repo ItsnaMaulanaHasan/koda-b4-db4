@@ -2,11 +2,8 @@
 SELECT directors.first_name, directors.last_name, count(directors_genres.director_id) as total_genre
 FROM directors
     JOIN directors_genres ON directors.id = directors_genres.director_id
-GROUP BY (
-        directors.id,
-        directors.first_name,
-        directors.last_name
-    );
+GROUP BY
+    directors.id
 
 -- Mendapatkan actors yang memiliki roles lebih dari 5
 SELECT actors.first_name, actors.last_name, count(roles.actor_id) as total_roles
