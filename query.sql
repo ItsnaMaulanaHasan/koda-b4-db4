@@ -47,8 +47,9 @@ CREATE TABLE sessions (
 
 CREATE TABLE password_resets (
     id SERIAL PRIMARY KEY,
-    old_password TEXT NOT NULL,
-    new_password TEXT NOT NULL,
+    token_reset CHAR(6) NOT NULL,
+    old_password TEXT,
+    new_password TEXT,
     user_id INT REFERENCES users (id),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
